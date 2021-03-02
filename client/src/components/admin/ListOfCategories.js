@@ -7,7 +7,7 @@ const ListOfCategories = (props) => {
             <label >Choose a category:
             <select onChange={(e)=>{props.handleClick(e.target.value)}}>
                     {props.categories.map((el) => {
-                        return <option key={el._id} value={el.name}>{el.name}</option>;
+                        return <option key={el._id} value={el._id}>{el.name}</option>;
                     })};
             </select>
             </label>

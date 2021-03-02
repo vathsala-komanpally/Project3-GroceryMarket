@@ -1,36 +1,10 @@
 import React from 'react';
-import {useEffect, useState} from "react";
 import {BrowserRouter as Router, Link, Switch, Route} from "react-router-dom";
 import {AddItem} from "./AddItem";
 import {UpdateItem} from "./UpdateItem";
 import {DeleteItem} from "./DeleteItem";
 
 const OperationsOfAdmin = () => { 
-    const [categories, setCategories]=useState([]);
-    //const [items, setItems]=useState([]);
-    //const [categoryAdd, setCategoryAdd]=useState([]);
-    //const [categoryUpdate, setCategoryUpdate]=useState([]);
-
-
-    useEffect(()=>{
-    fetch('http://localhost:9000/api/groceryItems/category/all',{
-            method: "GET",
-            headers:{
-                "Content-Type": "application/json"
-            },
-        }).then((response)=>{
-            console.log("responses", response.data);
-            return response.json();
-        }).then((groceryCategories)=>{
-            console.log("grocery Categories",groceryCategories);
-            setCategories(groceryCategories);
-        });
-    },[]);
-
-    const handleCategoriesClick=(categoryID)=>{
-       const selectedCategory= categories.find(categoryID);
-      //setCategoryUpdate(selectedCategory);
-    }
     return (
         <Router>
         <div className="operationsofadmin">
@@ -66,8 +40,8 @@ const OperationsOfAdmin = () => {
         </div>
         
         <Switch>
-            <Route path="/admin/operations/addItem"><AddItem categories={categories}/></Route>
-            <Route path="/admin/operations/updateItem"><UpdateItem categories={categories}/></Route>
+            <Route path="/admin/operations/addItem"><AddItem/></Route>
+            <Route path="/admin/operations/updateItem"><UpdateItem/></Route>
             <Route path="/admin/operations/deleteItem"><DeleteItem /></Route>
             </Switch>
         </Router>
