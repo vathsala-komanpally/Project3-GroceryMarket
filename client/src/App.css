@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.operationsofadmin{
+  float:left;
+width:65%;
+overflow:hidden;
+} .addItem, .updateItem, .deleteItem{
+  float:left;
+  width:30%;
+  overflow:hidden;
+  border: 10px solid rgb(204, 161, 80);
+}

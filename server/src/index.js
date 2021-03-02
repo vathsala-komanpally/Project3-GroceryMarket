@@ -18,7 +18,7 @@ mongoose.connect("mongodb://localhost:27017/GroceryStoreFullStack", {
 const app = express();
 
 // This is the port your application will use
-const port = 3000;
+const port = 9000;
 
 // Add middleware to be able to read and understand json files
 app.use(express.json());
@@ -31,6 +31,6 @@ app.use("/api/admins", adminRouter);
 app.use("/api/groceryItems", groceryRouter);
 
 
-app.listen(port, () =>
+app.listen(process.env.PORT ||port, () =>
   console.log(`Fruit app is listening at http://localhost:${port}`)
 );
