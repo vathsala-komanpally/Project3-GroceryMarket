@@ -1,6 +1,7 @@
 import React from 'react';
 
 const ListOfItems = (props) => {
+    console.log("props of list of items", props.groceryItems);
     return (
         <div className="displayItems">
             <label >Items in that category are:

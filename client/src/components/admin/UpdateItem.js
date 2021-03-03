@@ -6,8 +6,8 @@ const UpdateItem = () => {
     const [categories, setCategories] = useState([]);
     const [groceryItems, setGroceryItems] = useState([]);
     const [selectedCategoryId, setSelectedCategoryId] = useState({ categoryId: '' });
+    const [selectedItemId, setSelectedItemId] = useState({ _id: '' });
     const [updateCategoryName, setUpdateCategoryName] = useState('');
-    const [selectedItemName, setSelectedItemName] = useState({ itemname: '' });
     const [items, setItems]=useState({itemname:'',
     price:'',
     noOfItems:''});
@@ -26,9 +26,11 @@ const UpdateItem = () => {
             setCategories(groceryCategories);
         });
     }, []);
+
     useEffect(()=>{
         setGroceryItems(groceryItems);
     },[groceryItems]);
+
     const handleClickCategory = (categoryId) => {
         console.log("categoryId:", categoryId);
         const CategoryId = { categoryId: categoryId };
@@ -51,36 +53,57 @@ const UpdateItem = () => {
             setGroceryItems(items);
             console.log("Items List:", groceryItems);
         });
-       
+    }
+
+    const handleChangeUpdateCategoryName=(e)=>{
+        setUpdateCategoryName(e.target.value);
+    }
+
+    const handleUpdateCategoryClick = () => {
+        const updateCategory={name:updateCategoryName};
+        fetch(`http://localhost:9000/api/groceryItems/update-category/${selectedCategoryId.categoryId}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updateCategory),
+        }).then((response) => {
+            console.log("responses", response);
+        })
     }
 
     const handleClickItems=(itemName)=>{
-        setSelectedItemName({itemname:itemName});
-        console.log("Item Name choosen:",selectedItemName);
-        items.itemname=itemName;
+        const selectedItemNamePassing={itemname:itemName,
+        price:'',
+        noOfItems:''};
+        setItems(selectedItemNamePassing);
+        const foundItemId = groceryItems.find((element) => {
+            return element.itemname === itemName;
+        });
+        const ItemId = { _id: foundItemId._id };
+        setSelectedItemId(ItemId);
     }
-
+    
     const handleChange=(e)=>{
         const newItemState={...items, [e.target.name]:e.target.value};
         setItems(newItemState);
     }
 
     const handleUpdateItemClick = () => {
-        console.log("items updated are:",items);
-        console.log("selected category Id is:", selectedCategoryId);
-        const completeItemDetails = { ...items, ...selectedCategoryId };
-        setGroceryItems(completeItemDetails);
-        console.log("new Item details added",completeItemDetails);
-        fetch(`http://localhost:9000/api/groceryItems/update-item/${completeItemDetails.categoryId}`, {
+        //const completeItemDetails = { ...items, ...selectedCategoryId };
+       
+        fetch(`http://localhost:9000/api/groceryItems/update-item/${selectedItemId._id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(completeItemDetails),
+            body: JSON.stringify(items),
         }).then((response) => {
             console.log("responses", response);
         })
+       // setGroceryItems(items);
     }
+  
 
     return (
         <div className="updateItem">
@@ -89,9 +112,10 @@ const UpdateItem = () => {
 
             <div className="updateCategoryName">
                 <label >Selected category name:
-                <input className="selectedCategoryName" value={updateCategoryName} name="name" placeholder="Enter a name of category" />
+                <input value={updateCategoryName} name="name" onChange={handleChangeUpdateCategoryName} placeholder="Enter a name of category" />
                 </label>
             </div>
+            <button type="submit" onClick={handleUpdateCategoryClick} className="btn btn-primary">Update Category</button>
             <ListOfItems groceryItems={groceryItems} handleClick={handleClickItems}/>
             <div className="itemDetails">
              <div className="ItemName">

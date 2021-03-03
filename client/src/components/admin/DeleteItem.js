@@ -8,7 +8,7 @@ const DeleteItem = () => {
     const [selectedCategoryId, setSelectedCategoryId] = useState({ categoryId: '' });
     const [updateCategoryName, setUpdateCategoryName] = useState('');
     const [selectedItemName, setSelectedItemName] = useState({ itemname: '' });
-    const [selectedItemId, setSelectedItemId] = useState('');
+    const [selectedItemId, setSelectedItemId] = useState({_id:''});
     useEffect(() => {
         fetch('http://localhost:9000/api/groceryItems/category/all', {
             method: "GET",
@@ -24,6 +24,12 @@ const DeleteItem = () => {
         });
     }, []);
 
+    useEffect(()=>{
+        setGroceryItems(groceryItems);
+    },[groceryItems]);
+
+
+    console.log("grocery Items:",groceryItems);
     const handleClickCategory = (categoryId) => {
         console.log("categoryId:", categoryId);
         const CategoryId = { categoryId: categoryId };
@@ -46,8 +52,8 @@ const DeleteItem = () => {
             setGroceryItems(items);
             console.log("Items List:", groceryItems);
         });
-       
     }
+
     const handleDeleteCategoryNameSubmit=()=>{
         fetch(`http://localhost:9000/api/groceryItems/delete-category/${selectedCategoryId.categoryId}`, {
             method: "DELETE",
@@ -65,8 +71,8 @@ const DeleteItem = () => {
             return element.itemname === itemName;
         });
 
-        console.log("Item Name choosen ID:",foundItemId);
-        setSelectedItemId(foundItemId);
+        const ItemId = { _id: foundItemId._id };
+        setSelectedItemId(ItemId);
     }
     const handleDeleteItemNameSubmit=()=>{
         console.log("selected item ID is:",selectedItemId);

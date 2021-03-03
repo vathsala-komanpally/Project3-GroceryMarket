@@ -57,6 +57,20 @@ router.patch("/update-item/:id", (request, response) => {
     });
 });
 
+router.patch("/update-category/:id", (request, response) => {
+    categoryModel.findByIdAndUpdate(request.params.id, request.body).then((data) => {
+
+        if (data) {
+            response.send("updated successfully");
+
+        } else {
+            response.send("Please enter valid Id, category-id doesn't exist");
+        }
+    }).catch(() => {
+        response.status(404).send("Category was not found!");
+    });
+});
+
 
 router.delete("/delete-item/:id", (request, response) => {
     groceryItemsModel.findByIdAndDelete(request.params.id).then((data) => {
