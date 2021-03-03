@@ -1,14 +1,16 @@
 import React,{useState, useEffect} from 'react'
 
 const ItemDetails=(props)=> {
-    const [items, setItems]=useState({itemname: '',
-    price: '',
-    noOfItems: ''});
-
+    const NameOfItem=props.itemNameSelected.itemname;
+    console.log("name of item here", NameOfItem)
+    const [items, setItems]=useState({itemname:'',
+    price:'',
+    noOfItems:''});
+  
     useEffect(()=>{
         setItems(items);
     },[items]);
-
+    console.log("neew items",items);
     const handleChange=(e)=>{
         const newItemState={...items, [e.target.name]:e.target.value};
         setItems(newItemState);
@@ -25,12 +27,12 @@ const ItemDetails=(props)=> {
 
             <div className="ItemPrice">
                 <label >Price
-                <input name="price" value={items.price} onChange={handleChange} placeholder="Enter a price of item"  />
+                <input name="price" value={items.price} onChange={handleChange} placeholder="Enter a price of item"/>
                 </label>
             </div>
             <div className="no.OfItems">
                 <label >Number Of Items
-                <input name="noOfItems" value={items.noOfItems} onChange={handleChange} placeholder="Enter no. of items"  />
+                <input name="noOfItems" value={items.noOfItems} onChange={handleChange} placeholder="Enter no. of items"/>
                 </label>
             </div>
         </div>

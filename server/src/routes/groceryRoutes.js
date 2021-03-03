@@ -59,13 +59,20 @@ router.patch("/update-item/:id", (request, response) => {
 
 
 router.delete("/delete-item/:id", (request, response) => {
-    groceryItemsModel.findByIdAndDelete(request.params.id).then((dta) => {
+    groceryItemsModel.findByIdAndDelete(request.params.id).then((data) => {
         response.send("Item deleted scuccessfully!");
     }).catch(() => {
         response.status(4040).send("Item was not found!");
     });
 });
 
+router.delete("/delete-category/:id", (request, response) => {
+    categoryModel.findByIdAndDelete(request.params.id).then((data) => {
+        response.send("Category deleted scuccessfully!");
+    }).catch(() => {
+        response.status(4040).send("Category was not found!");
+    });
+});
 
 router.get("/category/:id", (request, response) => {
     groceryItemsModel.

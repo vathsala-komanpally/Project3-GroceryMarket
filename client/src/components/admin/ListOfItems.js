@@ -3,12 +3,13 @@ import React from 'react';
 const ListOfItems = (props) => {
     return (
         <div className="displayItems">
-            <label >Choose an Item:</label>
-            <select name="itemId" id="items">
-                {props.items.map((element)=>{
-                    <option key={element._ID} onClick={()=>{props.handleClick(element._ID)}}>{element.name}</option>
-            })}
+            <label >Items in that category are:
+            <select onChange={(e)=>{props.handleClick(e.target.value)}}>
+                    {props.groceryItems.map((el) => {
+                        return <option key={el._id} value={el.name}>{el.itemname}</option>;
+                    })};
             </select>
+            </label>
         </div>
     )
 }
