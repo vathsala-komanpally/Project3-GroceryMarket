@@ -9,7 +9,8 @@ const AddItem = () => {
     const [groceryItem, setGroceryItem] = useState({});
     const [items, setItems]=useState({itemname:'',
     price:'',
-    noOfItems:''});
+    noOfItems:'',
+    image:''});
     
 
     useEffect(()=>{
@@ -19,10 +20,8 @@ const AddItem = () => {
                     "Content-Type": "application/json"
                 },
             }).then((response)=>{
-                console.log("responses", response.data);
                 return response.json();
             }).then((groceryCategories)=>{
-                console.log("grocery Categories",groceryCategories);
                 setCategories(groceryCategories);
             });
         },[]);
@@ -40,10 +39,8 @@ const AddItem = () => {
             },
             body: JSON.stringify(categoryName),
         }).then((response) => {
-            console.log("responses", response);
             return response.json();
         }).then((groceryCategory) => {
-            console.log("grocery Categories", groceryCategory);
             const addedCategories=[...categories];
             addedCategories.push(groceryCategory);
             setCategories(addedCategories);
@@ -51,7 +48,6 @@ const AddItem = () => {
     }
 
     const handleClickCategory = (categoryId) => {
-        console.log("categoryId:", categoryId);
         const CategoryId = { categoryId: categoryId };
         setSelectedCategoryId(CategoryId);
     }
@@ -63,7 +59,6 @@ const AddItem = () => {
     const handleAddItemClick = () => {
         const completeItemDetails = { ...items, ...selectedCategoryId };
         setGroceryItem(completeItemDetails);
-        console.log("new Item details added",groceryItem);
         fetch('http://localhost:9000/api/groceryItems/new-item', {
             method: "POST",
             headers: {
@@ -71,7 +66,6 @@ const AddItem = () => {
             },
             body: JSON.stringify(completeItemDetails),
         }).then((response) => {
-            console.log("responses", response);
         });
     }
 
@@ -96,13 +90,18 @@ const AddItem = () => {
             </div>
 
             <div className="ItemPrice">
-                <label >Price
+                <label >Price:
                 <input name="price" value={items.price} onChange={handleChange} placeholder="Enter a price of item"/>
                 </label>
             </div>
             <div className="no.OfItems">
-                <label >Number Of Items
+                <label >Number Of Items:
                 <input name="noOfItems" value={items.noOfItems} onChange={handleChange} placeholder="Enter no. of items"/>
+                </label>
+            </div>
+            <div className="imageOfItem">
+                <label >image Url:
+                <input name="image" value={items.image} onChange={handleChange} placeholder="Paste Url link here"/>
                 </label>
             </div>
         </div>
