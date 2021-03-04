@@ -1,9 +1,10 @@
 import React from "react";
 import {BrowserRouter as Router, Link, Switch, Route} from "react-router-dom";
-import {OperationsOfAdmin} from "./components/admin/OperationsOfAdmin";
-import {ItemsDisplay} from "../src/components/userInterface/ItemsDisplay";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {OperationsOfAdmin} from "./components/admin/OperationsOfAdmin";
+import {MainPageDesign} from "./components/userInterface/MainPageDesign";
+
 
 export const App=()=> {
   return (
@@ -17,7 +18,7 @@ export const App=()=> {
           <OperationsOfAdmin/>
           </Route>
           <Route path="/user">
-            <ItemsDisplay/>
+            <MainPageDesign/>
           </Route>
         </Switch>
       </Router>
