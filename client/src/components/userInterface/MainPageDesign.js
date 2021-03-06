@@ -14,7 +14,7 @@ const MainPageDesign=() =>{
                 <FixedSideBar/>
             </div>
             <div className="displayItems">
-                <ItemsDisplay/>
+               <ItemsDisplay/>
             </div>
             <div className="footer">
                 <Footer/>

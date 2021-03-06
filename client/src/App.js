@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Link, Switch, Route} from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {OperationsOfAdmin} from "./components/admin/OperationsOfAdmin";
-import {MainPageDesign} from "./components/userInterface/MainPageDesign";
+import {StartPage} from "../src/components/BootStrap/StartPage";
 
 
 export const App=()=> {
@@ -18,7 +18,7 @@ export const App=()=> {
           <OperationsOfAdmin/>
           </Route>
           <Route path="/user">
-            <MainPageDesign/>
+            <StartPage/>
           </Route>
         </Switch>
       </Router>
