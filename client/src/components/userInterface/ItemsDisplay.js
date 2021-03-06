@@ -6,9 +6,9 @@ const ItemsDisplay = (props) => {
     const [itemsList, setItemsList] = useState([]);
     const [cart, setCart] = useState([]);
 
-
+console.log("props category Id is:",props.categoryId);
     useEffect(() => {
-        fetch('http://localhost:9000/api/groceryItems/category/603f8fb5dae57803ce3660bb', {
+        fetch(`http://localhost:9000/api/groceryItems/category/${props.categoryId}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -25,9 +25,10 @@ const ItemsDisplay = (props) => {
     const addToCart = (itemDetails) => {
         setCart([...cart, itemDetails]);
     }
+    console.log("props category Id is:",itemsList);
 
     return (
-        <div className="displayItems">
+        <div >
             <header>
                 <button className="cart">Cart {cart.length}</button>
             </header>
