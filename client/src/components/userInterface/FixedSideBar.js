@@ -42,15 +42,15 @@ const FixedSideBar = () => {
             setItemsList(items);
         });
 
-        const addToCart = (itemDetails) => {
-            setCart([...cart, itemDetails]);
-        }
+        // const addToCart = (itemDetails) => {
+        //     setCart([...cart, itemDetails]);
+        // }
     }
 
     return (
         <div>
         <Container>
-            <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+            <Tab.Container id="left-tabs-example">
                 <Row md={4}>
                     <Col>
                         <Nav variant="pills" className="flex-column">

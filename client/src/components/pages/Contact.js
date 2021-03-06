@@ -12,7 +12,6 @@ const Contact = () => {
         Saturday 10am to 4:30pm
         Sunday 11am to 4pm
     </p>
-    <p><a href="#" role="button">Learn more</a></p>
  </div>
 
   );

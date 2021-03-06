@@ -7,7 +7,6 @@ const Catalogue = () => {
     <br/>
     Every week, we will update a new catalogue.
     </p>
-    <p><a href="#" role="button">Learn more</a></p>
  </div>
   );
 }

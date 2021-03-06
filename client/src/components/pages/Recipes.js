@@ -31,7 +31,6 @@ const Reciepes = () => {
          To serve, top with cream cheese mixture and extra raspberries, and dust with extra cocoa.<br/>
         tip: preparation time + chilling time.
         </p>
-        <p><a href="#" role="button">Learn more</a></p>
         </div>
         
     );

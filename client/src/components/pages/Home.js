@@ -10,8 +10,6 @@ const Home = () => {
     and Low Price Always, to help you get your money’s worth when you shop with us.
     Every week, you'll find hundreds of new specials.
     </p>
-    <p><a href="#" role="button">Learn more</a></p>
-  
  </div>
   )
 }
