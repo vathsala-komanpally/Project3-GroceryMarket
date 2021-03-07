@@ -22,7 +22,7 @@ const items = [
 const NavBar = () => {
     return (
         <Router>
-            <div>
+            <div className="navbar">
 
                 <Navbar bg="light" expand="lg">
                     <Navbar.Brand>Welcome! to Grocery Page</Navbar.Brand>

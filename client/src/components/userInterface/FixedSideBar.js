@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container'
-
+import CardGroup from 'react-bootstrap/CardGroup'
 
 const FixedSideBar = () => {
     const [categories, setCategories] = useState([]);
@@ -51,10 +51,10 @@ const FixedSideBar = () => {
         <div>
         <Container>
             <Tab.Container id="left-tabs-example">
-                <Row md={4}>
-                    <Col>
-                        <Nav variant="pills" className="flex-column">
-                            <Nav.Item>
+                <Row>
+                    <Col md={2}>
+                        <Nav variant="pills" className="flex-column" bg="dark">
+                            <Nav.Item >
                                 {categories.map((categoryDetails) => (
                                     <Nav.Link onSelect={handleOnClickCategoryName} eventKey={categoryDetails._id} key={categoryDetails._id}>{categoryDetails.name}</Nav.Link>
                                 ))}
@@ -62,12 +62,13 @@ const FixedSideBar = () => {
                         </Nav>
                     </Col>
                     
-                    <Col>
+                  
+                                {itemsList.map((itemDetails) => (  <Col md={3}>
                         <Tab.Content>
                             <Tab.Pane eventKey={selectedCategoryId}>
-                                {itemsList.map((itemDetails) => (
-                                    <Card style={{ width: '18rem' }}>
-                                        <Card.Img variant="top" src={itemDetails.image} />
+                            <CardGroup style={{}}>
+                                    <Card  border="info" style={{ width: '18rem' }}>
+                                        <Card.Img variant="top" src={itemDetails.image} style={{width:250, height:200}} />
                                         <Card.Body>
                                             <Card.Title>{itemDetails.itemname}</Card.Title>
                                             <Card.Text>price: {itemDetails.price}$ <br />Quantity left:{itemDetails.noOfItems}
@@ -75,10 +76,12 @@ const FixedSideBar = () => {
                                             <Button variant="info">Add to Cart</Button>
                                         </Card.Body>
                                     </Card>
-                                ))}
-                            </Tab.Pane>
+                                    </CardGroup>
+                                    </Tab.Pane>
                         </Tab.Content>
                     </Col>
+                                ))}
+                          
                 </Row>
             </Tab.Container>
 
