@@ -3,10 +3,9 @@ import Tab from 'react-bootstrap/Tab'
 import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Button from'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container'
-import CardGroup from 'react-bootstrap/CardGroup'
+import {ItemsDisplay} from './ItemsDisplay';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const FixedSideBar = () => {
     const [categories, setCategories] = useState([]);
@@ -41,6 +40,8 @@ const FixedSideBar = () => {
             console.log("items from DB", items);
             setItemsList(items);
         });
+        console.log("items cliked are:", itemsList);
+       
 
         // const addToCart = (itemDetails) => {
         //     setCart([...cart, itemDetails]);
@@ -53,7 +54,7 @@ const FixedSideBar = () => {
             <Tab.Container id="left-tabs-example">
                 <Row>
                     <Col md={2}>
-                        <Nav variant="pills" className="flex-column" bg="dark">
+                        <Nav variant="tabs" >
                             <Nav.Item >
                                 {categories.map((categoryDetails) => (
                                     <Nav.Link onSelect={handleOnClickCategoryName} eventKey={categoryDetails._id} key={categoryDetails._id}>{categoryDetails.name}</Nav.Link>
@@ -61,32 +62,14 @@ const FixedSideBar = () => {
                             </Nav.Item>
                         </Nav>
                     </Col>
-                    
+                   <Col>
                   
-                                {itemsList.map((itemDetails) => (  <Col md={3}>
-                        <Tab.Content>
-                            <Tab.Pane eventKey={selectedCategoryId}>
-                            <CardGroup style={{}}>
-                                    <Card  border="info" style={{ width: '18rem' }}>
-                                        <Card.Img variant="top" src={itemDetails.image} style={{width:250, height:200}} />
-                                        <Card.Body>
-                                            <Card.Title>{itemDetails.itemname}</Card.Title>
-                                            <Card.Text>price: {itemDetails.price}$ <br />Quantity left:{itemDetails.noOfItems}
-                                            </Card.Text>
-                                            <Button variant="info">Add to Cart</Button>
-                                        </Card.Body>
-                                    </Card>
-                                    </CardGroup>
-                                    </Tab.Pane>
-                        </Tab.Content>
+                    <ItemsDisplay itemsList={itemsList}/>
                     </Col>
-                                ))}
-                          
                 </Row>
             </Tab.Container>
 
             </Container>
-            <button className="cart">Cart {cart.length}</button>
         </div>
     )
 }

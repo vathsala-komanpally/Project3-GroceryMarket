@@ -12,18 +12,18 @@ import Button from 'react-bootstrap/Button'
 import FormControl from 'react-bootstrap/FormControl'
 
 const items = [
-    { to: '/user/home', label: 'Home' },
-    { to: '/user/about', label: 'About' },
-    { to: '/user/catalogue', label: 'Catalogue' },
-    { to: '/user/reciepes', label: 'Reciepes' },
-    { to: '/user/contact', label: 'Contact' },
+    { to: '/home', label: 'Home' },
+    { to: '/about', label: 'About' },
+    { to: '/catalogue', label: 'Catalogue' },
+    { to: '/reciepes', label: 'Reciepes' },
+    { to: '/contact', label: 'Contact' },
 ]
 
 const NavBar = () => {
     return (
         <Router>
-            <div className="navbar">
-
+            <div>
+                <div className="navbar">
                 <Navbar bg="light" expand="lg">
                     <Navbar.Brand>Welcome! to Grocery Page</Navbar.Brand>
                     <Nav className="mr-auto">
@@ -36,13 +36,13 @@ const NavBar = () => {
                         <Button variant="outline-success">Search</Button>
                     </Form>
                     </Navbar>
-         
+                    </div>
             <Switch>
-                <Route path="/user/home"><Home /></Route>
-                <Route path="/user/about"><About /></Route>
-                <Route path="/user/catalogue"><Catalogue /></Route>
-                <Route path="/user/reciepes"><Reciepes /></Route>
-                <Route path="/user/contact"><Contact /></Route>
+                <Route path="/home"><Home /></Route>
+                <Route path="/about"><About /></Route>
+                <Route path="/catalogue"><Catalogue /></Route>
+                <Route path="/reciepes"><Reciepes /></Route>
+                <Route path="/contact"><Contact /></Route>
             </Switch>
             </div>
             </Router >

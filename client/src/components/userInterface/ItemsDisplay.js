@@ -1,50 +1,40 @@
 import React, { useEffect, useState } from 'react'
 import Card from 'react-bootstrap/Card';
-import Button from'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button';
+import CardGroup from 'react-bootstrap/CardGroup'
+
 
 const ItemsDisplay = (props) => {
-    const [itemsList, setItemsList] = useState([]);
     const [cart, setCart] = useState([]);
 
-console.log("props category Id is:",props.categoryId);
-    useEffect(() => {
-        fetch(`http://localhost:9000/api/groceryItems/category/${props.categoryId}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            },
-        }).then((response) => {
-            console.log("responses", response);
-            return response.json();
-        }).then((items) => {
-            console.log("items from DB", items);
-            setItemsList(items);
-        });
-    }, []);
+    console.log("props items List is:", props.itemsList);
 
-    const addToCart = (itemDetails) => {
+    const handleAddToCartOnClick = (itemDetails) => {
         setCart([...cart, itemDetails]);
     }
-    console.log("props category Id is:",itemsList);
+
 
     return (
-        <div >
-            <header>
+        <div>
+            {/* <header>
                 <button className="cart">Cart {cart.length}</button>
-            </header>
-           
-            {itemsList.map((itemDetails) => (
-                <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={itemDetails.image}/>
-                <Card.Body>
-                    <Card.Title>{itemDetails.itemname}</Card.Title>
-                    <Card.Text>price: {itemDetails.price}$ <br/>
-                    Quantity left:{itemDetails.noOfItems}
-                     </Card.Text>
-                    <Button variant="info" onClick={() => addToCart(itemDetails)}>Add to Cart</Button>
-                </Card.Body>
-            </Card>
+            </header> */}
+             <CardGroup>
+            {props.itemsList.map((itemDetails) => ( 
+                <CardGroup>
+                    <Card border="info" style={{ width: '18rem' }}>
+                        <Card.Img variant="top" src={itemDetails.image} style={{ width: 285, height: 200 }} />
+                        <Card.Body>
+                            <Card.Title>{itemDetails.itemname}</Card.Title>
+                            <Card.Text>price: {itemDetails.price}$ <br />Quantity left:{itemDetails.noOfItems}
+                            </Card.Text>
+                            <Button variant="info" onClick={()=>handleAddToCartOnClick(itemDetails)}>Add to Cart</Button>
+                        </Card.Body>
+                    </Card>
+                </CardGroup>
+             
             ))}
+            </CardGroup>
         </div>
     )
 }

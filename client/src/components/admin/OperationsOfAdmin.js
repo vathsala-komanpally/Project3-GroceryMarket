@@ -14,7 +14,7 @@ const OperationsOfAdmin = () => {
                 To add a new category name/item name in there or <br/>
                 To add new item in the existing category name<br/>
                 </p>
-                <Link to="/admin/operations/addItem">
+                <Link to="/admin/addItem">
                 <button type="button" id="add" className="btn btn-primary" >Add</button>
                 </Link>
             </div>
@@ -22,7 +22,7 @@ const OperationsOfAdmin = () => {
                 <p className="updateItemInfo">Click on update: <br/>
                 To update existing category or item deatils <br/>
                 </p>
-                <Link to="/admin/operations/updateItem">
+                <Link to="/admin/updateItem">
                 <button type="button" id="update" className="btn btn-primary">Update</button>
                 </Link>
                 
@@ -32,7 +32,7 @@ const OperationsOfAdmin = () => {
                 <p className="deleteItemInfo">Click on Delete: <br/>
                 To delete a category or any item from particular category<br/>
                 </p>
-                <Link to="/admin/operations/deleteItem">
+                <Link to="/admin/deleteItem">
                 <button type="button" id="delete" className="btn btn-primary">Delete</button>
                 </Link>
                 
@@ -40,9 +40,9 @@ const OperationsOfAdmin = () => {
         </div>
         
         <Switch>
-            <Route path="/admin/operations/addItem"><AddItem/></Route>
-            <Route path="/admin/operations/updateItem"><UpdateItem/></Route>
-            <Route path="/admin/operations/deleteItem"><DeleteItem /></Route>
+            <Route path="/admin/addItem"><AddItem/></Route>
+            <Route path="/admin/updateItem"><UpdateItem/></Route>
+            <Route path="/admin/deleteItem"><DeleteItem /></Route>
             </Switch>
         </Router>
     )

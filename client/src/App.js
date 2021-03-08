@@ -3,22 +3,24 @@ import {BrowserRouter as Router, Link, Switch, Route} from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {OperationsOfAdmin} from "./components/admin/OperationsOfAdmin";
-import {MainPageDesign} from "../src/components/userInterface/MainPageDesign";
+import { NavBar } from './components/userInterface/NavBar';
+import { FixedSideBar } from './components/userInterface/FixedSideBar';
+import { Footer } from './components/userInterface/Footer';
 
 
 export const App=()=> {
   return (
     <div className="App">
-      <h1>App is running</h1>
       <Router>
-        <Link to="/admin/operations">Admin Operations</Link>
-        <Link to="/">MainPageDesign</Link>
+        <Link to="/admin">Please Click here....>Admin Operations</Link>
         <Switch>
-          <Route path="/admin/operations">
+          <Route path="/admin">
           <OperationsOfAdmin/>
           </Route>
           <Route path="/">
-            <MainPageDesign/>
+            <NavBar />
+            <FixedSideBar />
+            <Footer />
           </Route>
         </Switch>
       </Router>
