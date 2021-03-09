@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Jumbotron from 'react-bootstrap/Jumbotron'
+import Container from 'react-bootstrap/Container';
 const Reciepes = () => {
     return (
-        <div>
+        <Jumbotron>
+        <Container>
         <h1>Today's Recipe:</h1>
         <p>Ingredients: <br/>
         1/2 cup cream cheese <br/>
@@ -31,8 +33,9 @@ const Reciepes = () => {
          To serve, top with cream cheese mixture and extra raspberries, and dust with extra cocoa.<br/>
         tip: preparation time + chilling time.
         </p>
-        </div>
-        
+        </Container>
+        </Jumbotron>
+   
     );
 }
 

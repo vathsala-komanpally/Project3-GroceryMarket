@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import CardGroup from 'react-bootstrap/CardGroup'
 
 
+
 const ItemsDisplay = (props) => {
     const [cart, setCart] = useState([]);
 
@@ -21,7 +22,7 @@ const ItemsDisplay = (props) => {
             {/* <header>
                 <button className="cart">Cart {cart.length}</button>
             </header> */}
-             <CardGroup>
+             <CardGroup >
             {props.itemsList.map((itemDetails) => ( 
                 <CardGroup key={itemDetails._id}>
                     <Card border="info" style={{ width: '18rem' }}>

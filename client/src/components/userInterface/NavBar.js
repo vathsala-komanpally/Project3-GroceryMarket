@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import { Home } from '../pages/Home';
 import { About } from '../pages/About'
 import { Catalogue } from '../pages/Catalogue'
@@ -27,7 +27,6 @@ const NavBar = (props) => {
     }
     return (
         <Router>
-            <div>
                 <div className="navbar">
                 <Navbar bg="light" expand="lg">
                     <Navbar.Brand>Welcome! to Grocery Page</Navbar.Brand>
@@ -41,17 +40,20 @@ const NavBar = (props) => {
                         <Button variant="outline-success">Search</Button>
                     </Form>
                     </Navbar>
+                    <Link to="/shop/cart">
                     <Button variant="light" onClick={handleCart}>Cart {props.cart.length}</Button> 
+                    </Link>
                     </div>
-                    <Cart cart={cart}/>
+                
             <Switch>
                 <Route path="/home"><Home /></Route>
                 <Route path="/about"><About /></Route>
                 <Route path="/catalogue"><Catalogue /></Route>
                 <Route path="/reciepes"><Reciepes /></Route>
                 <Route path="/contact"><Contact /></Route>
+                <Route path="/shop/cart"><Cart cart={cart}/></Route>
             </Switch>
-            </div>
+            
             </Router >
     )
 }
