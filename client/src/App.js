@@ -25,7 +25,6 @@ export const App=()=> {
           </Route>
           <Route path="/">
             <NavBar/>
-            
             <Footer />
           </Route>
         </Switch>

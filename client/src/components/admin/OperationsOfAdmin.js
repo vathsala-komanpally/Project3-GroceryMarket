@@ -6,7 +6,7 @@ import {DeleteItem} from "./DeleteItem";
 
 const OperationsOfAdmin = () => { 
     return (
-        <Router>
+        <div>
         <div className="operationsofadmin">
             <h2>List of things Admin can do here:</h2>
             <div className="addItemInfoUser">
@@ -37,14 +37,15 @@ const OperationsOfAdmin = () => {
                 </Link>
                 
             </div>
-        </div>
-        
-        <Switch>
+            </div>
             <Route path="/admin/addItem"><AddItem/></Route>
             <Route path="/admin/updateItem"><UpdateItem/></Route>
             <Route path="/admin/deleteItem"><DeleteItem /></Route>
-            </Switch>
-        </Router>
+      </div>
+        
+       
+           
+      
     )
 }
 
