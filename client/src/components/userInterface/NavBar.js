@@ -26,11 +26,11 @@ const NavBar = (props) => {
         setCart(props.cart);
     }
     return (
-        <Router>
+      <div>
                 <div className="navbar">
                 <Navbar bg="light" expand="lg">
                     <Navbar.Brand>Welcome! to Grocery Page</Navbar.Brand>
-                    <Nav className="mr-auto">
+                    <Nav className="mr-auto" >
                     {items.map(({ to, label }) => (
                     <Nav.Link key={to} href={to}>{label}</Nav.Link>
                 ))}
@@ -40,21 +40,20 @@ const NavBar = (props) => {
                         <Button variant="outline-success">Search</Button>
                     </Form>
                     </Navbar>
-                    <Link to="/shop/cart">
+                    <Link to="/cart">
                     <Button variant="light" onClick={handleCart}>Cart {props.cart.length}</Button> 
                     </Link>
                     </div>
-                
-            <Switch>
+           
                 <Route path="/home"><Home /></Route>
                 <Route path="/about"><About /></Route>
                 <Route path="/catalogue"><Catalogue /></Route>
                 <Route path="/reciepes"><Reciepes /></Route>
                 <Route path="/contact"><Contact /></Route>
-                <Route path="/shop/cart"><Cart cart={cart}/></Route>
-            </Switch>
+                <Route path="/cart"><Cart cart={cart}/></Route>
+          
             
-            </Router >
+            </div>
     )
 }
 

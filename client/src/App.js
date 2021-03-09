@@ -14,6 +14,7 @@ export const App=()=> {
     setCart(cartDeatils);
     console.log("in App component:", cart);
   }
+
   return (
     <div className="App">
       <Router>

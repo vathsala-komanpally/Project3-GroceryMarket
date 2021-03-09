@@ -15,7 +15,8 @@ const ItemsDisplay = (props) => {
         console.log("in item Details component:", cart);
         props.cart(cart);
     }
-
+  
+    
 
     return (
         <div>

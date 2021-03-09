@@ -5,8 +5,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import { ItemsDisplay } from './ItemsDisplay';
+
+
 
 
 const FixedSideBar = (props) => {
@@ -28,8 +31,8 @@ const FixedSideBar = (props) => {
   }, []);
 
   const handleOnClickCategoryName = (e) => {
-    console.log("category Id is:", e);
-    setSelectedCategoryId(e);
+    console.log("category Id is:", e.target.value);
+    setSelectedCategoryId(e.target.value);
     fetch(`http://localhost:9000/api/groceryItems/category/${selectedCategoryId}`, {
       method: "GET",
       headers: {
@@ -51,6 +54,7 @@ const FixedSideBar = (props) => {
   }
 
   return (
+<Router>
     <div>
       <Container>
         <Tab.Container id="left-tabs-example">
@@ -60,24 +64,27 @@ const FixedSideBar = (props) => {
               <Navbar bg="light" expand="lg" style={{ position:'relative'}}>
                 <Navbar.Brand>Categories: </Navbar.Brand>
                 <Nav className="mr-auto" >
-
+                 <Link to='/shop/category'>
                   {categories.map((categoryDetails) => (
-                    <Nav.Link onSelect={handleOnClickCategoryName} eventKey={categoryDetails._id} key={categoryDetails._id}>{categoryDetails.name}</Nav.Link>
+                    <Button variant="outline-info" size="lg" onClick={handleOnClickCategoryName} key={categoryDetails._id} 
+                    value={categoryDetails._id}>{categoryDetails.name}</Button> 
                   ))}
-                 
+                </Link>
                 </Nav>
               </Navbar>
               </div>
             </Col>
             <Col>
-
-              <ItemsDisplay itemsList={itemsList} cart={handleCart} />
+            <Switch>
+              <Route path='/shop/category'><ItemsDisplay itemsList={itemsList} cart={handleCart} /></Route>
+            </Switch>
             </Col>
           </Row>
         </Tab.Container>
 
       </Container>
     </div>
+    </Router>
   )
 }
 
