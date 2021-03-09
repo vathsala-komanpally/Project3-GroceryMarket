@@ -69,9 +69,7 @@
   grid-column-end: 3;
 }
 
-.footer{
-  grid-column: 1/ span 3;
-}
+
 
 .operationsofadmin{
   float:left;
@@ -88,4 +86,14 @@ overflow:hidden;
   grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: minmax(100px, auto);
 }
-
+.navbar{
+  background:rgb(101, 168, 177);
+}
+.footer{
+    position: fixed;
+    top:auto;
+    bottom:0;
+    width:100%;
+    height:60px;   /* Height of the footer */
+    background:rgb(101, 168, 177);
+}

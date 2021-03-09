@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Home } from '../pages/Home';
 import { About } from '../pages/About'
@@ -10,6 +10,7 @@ import Form from 'react-bootstrap/Form'
 import Nav from 'react-bootstrap/Nav'
 import Button from 'react-bootstrap/Button'
 import FormControl from 'react-bootstrap/FormControl'
+import {Cart} from './Cart';
 
 const items = [
     { to: '/home', label: 'Home' },
@@ -19,7 +20,11 @@ const items = [
     { to: '/contact', label: 'Contact' },
 ]
 
-const NavBar = () => {
+const NavBar = (props) => {
+    const [cart, setCart]=useState([]);
+    const handleCart=()=>{
+        setCart(props.cart);
+    }
     return (
         <Router>
             <div>
@@ -36,7 +41,9 @@ const NavBar = () => {
                         <Button variant="outline-success">Search</Button>
                     </Form>
                     </Navbar>
+                    <Button variant="light" onClick={handleCart}>Cart {props.cart.length}</Button> 
                     </div>
+                    <Cart cart={cart}/>
             <Switch>
                 <Route path="/home"><Home /></Route>
                 <Route path="/about"><About /></Route>

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {BrowserRouter as Router, Link, Switch, Route} from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,6 +9,11 @@ import { Footer } from './components/userInterface/Footer';
 
 
 export const App=()=> {
+  const [cart, setCart] = useState([]);
+  const handleCartDeatils=(cartDeatils)=>{
+    setCart(cartDeatils);
+    console.log("in App component:", cart);
+  }
   return (
     <div className="App">
       <Router>
@@ -18,8 +23,8 @@ export const App=()=> {
           <OperationsOfAdmin/>
           </Route>
           <Route path="/">
-            <NavBar />
-            <FixedSideBar />
+            <NavBar cart={cart}/>
+            <FixedSideBar cart={handleCartDeatils}/>
             <Footer />
           </Route>
         </Switch>

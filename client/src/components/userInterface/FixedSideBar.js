@@ -5,9 +5,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container'
 import {ItemsDisplay} from './ItemsDisplay';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-const FixedSideBar = () => {
+
+const FixedSideBar = (props) => {
     const [categories, setCategories] = useState([]);
     const [selectedCategoryId, setSelectedCategoryId] = useState('');
     const [itemsList, setItemsList] = useState([]);
@@ -41,11 +41,11 @@ const FixedSideBar = () => {
             setItemsList(items);
         });
         console.log("items cliked are:", itemsList);
-       
-
-        // const addToCart = (itemDetails) => {
-        //     setCart([...cart, itemDetails]);
-        // }
+    }
+    const handleCart=(cartDeatils)=>{
+      setCart( cartDeatils);
+      console.log("in fixed side Bar component:", cart);
+      props.cart(cart);
     }
 
     return (
@@ -54,7 +54,7 @@ const FixedSideBar = () => {
             <Tab.Container id="left-tabs-example">
                 <Row>
                     <Col md={2}>
-                        <Nav variant="tabs" >
+                        <Nav variant="pills" className="flex-column" bg="dark">
                             <Nav.Item >
                                 {categories.map((categoryDetails) => (
                                     <Nav.Link onSelect={handleOnClickCategoryName} eventKey={categoryDetails._id} key={categoryDetails._id}>{categoryDetails.name}</Nav.Link>
@@ -64,7 +64,7 @@ const FixedSideBar = () => {
                     </Col>
                    <Col>
                   
-                    <ItemsDisplay itemsList={itemsList}/>
+                    <ItemsDisplay itemsList={itemsList} cart={handleCart}/>
                     </Col>
                 </Row>
             </Tab.Container>

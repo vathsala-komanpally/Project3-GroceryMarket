@@ -11,6 +11,8 @@ const ItemsDisplay = (props) => {
 
     const handleAddToCartOnClick = (itemDetails) => {
         setCart([...cart, itemDetails]);
+        console.log("in item Details component:", cart);
+        props.cart(cart);
     }
 
 
@@ -21,7 +23,7 @@ const ItemsDisplay = (props) => {
             </header> */}
              <CardGroup>
             {props.itemsList.map((itemDetails) => ( 
-                <CardGroup>
+                <CardGroup key={itemDetails._id}>
                     <Card border="info" style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={itemDetails.image} style={{ width: 285, height: 200 }} />
                         <Card.Body>
