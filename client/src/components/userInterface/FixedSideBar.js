@@ -59,10 +59,10 @@ const FixedSideBar = (props) => {
       <Container>
         <Tab.Container id="left-tabs-example">
           <Row>
-            <Col md={10}>
+            <Col md={22}>
             <div >
               <Navbar bg="light" expand="lg" style={{ position:'relative'}}>
-                <Navbar.Brand>Categories: </Navbar.Brand>
+                <Navbar.Brand>Categories: ........................</Navbar.Brand>
                 <Nav className="mr-auto" >
                  <Link to='/shop/category'>
                   {categories.map((categoryDetails) => (

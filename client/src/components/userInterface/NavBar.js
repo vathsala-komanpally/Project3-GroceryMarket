@@ -9,6 +9,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Form from 'react-bootstrap/Form'
 import Nav from 'react-bootstrap/Nav'
 import Button from 'react-bootstrap/Button'
+import { FixedSideBar } from './FixedSideBar';
 import FormControl from 'react-bootstrap/FormControl'
 import {Cart} from './Cart';
 
@@ -20,12 +21,16 @@ const items = [
     { to: '/contact', label: 'Contact' },
 ]
 
-const NavBar = (props) => {
+const NavBar = () => {
     const [cart, setCart]=useState([]);
+    const handleCartDeatils=(cart)=>{
+        setCart(cart);
+    }
     const handleCart=()=>{
-        setCart(props.cart);
+       
     }
     return (
+        <Router>
       <div>
                 <div className="navbar">
                 <Navbar bg="light" expand="lg">
@@ -40,20 +45,24 @@ const NavBar = (props) => {
                         <Button variant="outline-success">Search</Button>
                     </Form>
                     </Navbar>
-                    <Link to="/cart">
-                    <Button variant="light" onClick={handleCart}>Cart {props.cart.length}</Button> 
+                    <Link to="/shop/cart">
+                    <Button variant="light" onClick={handleCart}>Cart  {cart.length}</Button> 
                     </Link>
                     </div>
-           
+                   
+                    <FixedSideBar cart={handleCartDeatils}/>
+                    <Switch>
                 <Route path="/home"><Home /></Route>
                 <Route path="/about"><About /></Route>
                 <Route path="/catalogue"><Catalogue /></Route>
                 <Route path="/reciepes"><Reciepes /></Route>
                 <Route path="/contact"><Contact /></Route>
-                <Route path="/cart"><Cart cart={cart}/></Route>
-          
+                <Route path="/shop/cart"><Cart cart={cart}/></Route>
+                </Switch>
+               
             
             </div>
+            </Router>
     )
 }
 

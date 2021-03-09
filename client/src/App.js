@@ -4,16 +4,16 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {OperationsOfAdmin} from "./components/admin/OperationsOfAdmin";
 import { NavBar } from './components/userInterface/NavBar';
-import { FixedSideBar } from './components/userInterface/FixedSideBar';
+
 import { Footer } from './components/userInterface/Footer';
 
 
 export const App=()=> {
-  const [cart, setCart] = useState([]);
-  const handleCartDeatils=(cartDeatils)=>{
-    setCart(cartDeatils);
-    console.log("in App component:", cart);
-  }
+  // const [cart, setCart] = useState([]);
+  // const handleCartDeatils=(cartDeatils)=>{
+  //   setCart(cartDeatils);
+  //   console.log("in App component:", cart);
+  // }
 
   return (
     <div className="App">
@@ -24,8 +24,8 @@ export const App=()=> {
           <OperationsOfAdmin/>
           </Route>
           <Route path="/">
-            <NavBar cart={cart}/>
-            <FixedSideBar cart={handleCartDeatils}/>
+            <NavBar/>
+            
             <Footer />
           </Route>
         </Switch>
