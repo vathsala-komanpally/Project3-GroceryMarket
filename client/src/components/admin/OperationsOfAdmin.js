@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Link, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Link, Route} from "react-router-dom";
 import {AddItem} from "./AddItem";
 import {UpdateItem} from "./UpdateItem";
 import {DeleteItem} from "./DeleteItem";

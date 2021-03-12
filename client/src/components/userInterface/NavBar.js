@@ -1,10 +1,4 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
-import { Home } from '../pages/Home';
-import { About } from '../pages/About'
-import { Catalogue } from '../pages/Catalogue'
-import { Reciepes } from '../pages/Recipes'
-import { Contact } from '../pages/Contact'
 import Navbar from 'react-bootstrap/Navbar'
 import Form from 'react-bootstrap/Form'
 import Nav from 'react-bootstrap/Nav'
@@ -14,27 +8,25 @@ import FormControl from 'react-bootstrap/FormControl'
 import { Cart } from './Cart';
 
 const items = [
-    { to: '/home', label: 'Home' },
+    { to: '/', label: 'Home' },
     { to: '/about', label: 'About' },
     { to: '/catalogue', label: 'Catalogue' },
     { to: '/reciepes', label: 'Reciepes' },
     { to: '/contact', label: 'Contact' },
 ]
 
-const NavBar = () => {
+const NavBar = (props) => {
     const [cart, setCart] = useState([]);
-    const handleCartDeatils = (cart) => {
-        setCart(cart);
-    }
+   
     const handleCart = () => {
-
+        setCart(cart);
     }
     return (
         <div>
             <div className="navbar">
                 <Navbar bg="light" expand="lg">
                     <Navbar.Brand>Welcome! to Grocery Page</Navbar.Brand>
-                    <Nav className="mr-auto" >
+                    <Nav className="mr-auto">
                         {items.map(({ to, label }) => (
                             <Nav.Link key={to} href={to}>{label}</Nav.Link>
                         ))}
@@ -44,20 +36,10 @@ const NavBar = () => {
                         <Button variant="outline-success">Search</Button>
                     </Form>
                 </Navbar>
-                <Link to="/shop/cart">
                     <Button variant="light" onClick={handleCart}>Cart  {cart.length}</Button>
-                </Link>
             </div>
-
-            <CategoriesNavBar cart={handleCartDeatils} />
-            <Route path="/home"><Home /></Route>
-            <Route path="/about"><About /></Route>
-            <Route path="/catalogue"><Catalogue /></Route>
-            <Route path="/reciepes"><Reciepes /></Route>
-            <Route path="/contact"><Contact /></Route>
-            <Route path="/shop/cart"><Cart cart={cart} /></Route>
+            <CategoriesNavBar />
         </div>
-
     )
 }
 
