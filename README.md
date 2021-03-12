@@ -1,8 +1,8 @@
 # Project3-GroceryMarket
-Project setup:
 
-FrontEnd: React
-BackEnd: MonoDBCompass
+Worked on: React js, css and MongoDB.
+
+Project setup:
 
 Installation - clone this repo and open in VS code then open terminal
 
@@ -20,10 +20,10 @@ Project output:
 . http://localhost:3000/  is a Grocery Market page
 ......> NavBar on top which naviagates to different pages
 
-......> there is "Cart" which shows items added to cart
-
 .......>Categories NavBar..with list of Category names comming from mongoDB
 
 .......>If u click on any category it displays all items in that category with the details and image
 
 .....> When user clicks on "Add to cart" it will be added to cart
+
+......> there is "Cart" which shows items added to cart
