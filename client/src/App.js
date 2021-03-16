@@ -17,10 +17,10 @@ export const App = () => {
 
   return (
     <Router>
+      <Link to="/admin">Please Click here to do:Admin Operations</Link>
       <div className="App">
         <NavBar cart={cart}/>
         <Footer />
-        <Link to="/admin">Please Click here to do:Admin Operations</Link>
         <Switch>
           <Route path="/admin" component={OperationsOfAdmin}></Route>
           <Route exact path="/" component={Home} ></Route>
@@ -28,7 +28,7 @@ export const App = () => {
           <Route path="/catalogue" component={Catalogue} ></Route>
           <Route path="/reciepes" component={Reciepes}></Route>
           <Route path="/contact" component={Contact}></Route>
-          <Route path="/shop/:id" ><ItemsDisplay cart={cart} seCart={setCart}/></Route>
+          <Route path="/shop/:id"><ItemsDisplay cart={cart} seCart={setCart}/></Route>
         </Switch>
 
       </div>

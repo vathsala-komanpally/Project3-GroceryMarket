@@ -1,11 +1,12 @@
 import React from 'react';
-import {BrowserRouter as Link, Route} from "react-router-dom";
+import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 import {AddItem} from "./AddItem";
 import {UpdateItem} from "./UpdateItem";
 import {DeleteItem} from "./DeleteItem";
 
 const OperationsOfAdmin = () => { 
     return (
+        <Router>
         <div>
         <div className="operationsofadmin">
             <h2>List of things Admin can do here:</h2>
@@ -38,11 +39,13 @@ const OperationsOfAdmin = () => {
                 
             </div>
             </div>
+            <Switch>
             <Route path="/admin/addItem"><AddItem/></Route>
             <Route path="/admin/updateItem"><UpdateItem/></Route>
             <Route path="/admin/deleteItem"><DeleteItem /></Route>
+            </Switch>
       </div>
-        
+      </Router>
        
            
       
