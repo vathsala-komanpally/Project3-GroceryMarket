@@ -1,6 +1,6 @@
 # Project3-GroceryMarket
 
-## Technologies: React.JS and MongoDB.
+### Technologies: React.JS and MongoDB.
 
 ## Project setup:  
 
