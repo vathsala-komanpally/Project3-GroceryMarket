@@ -1,8 +1,8 @@
 # Project3-GroceryMarket
 
-Worked on: React js, css and MongoDB.
+## Technologies: React.JS and MongoDB.
 
-Project setup:
+## Project setup:  
 
 Installation - clone this repo and open in VS code then open terminal
 
@@ -10,7 +10,7 @@ Installation - clone this repo and open in VS code then open terminal
 
  ......>cd server .....>npm install ......>npm start
 
-Project output:
+## Project output:
 
 .......> automatically opens your browser on http://localhost:3000/ Where u can see Grocery market page
 ![](client/src/components/images/3.home.png)
