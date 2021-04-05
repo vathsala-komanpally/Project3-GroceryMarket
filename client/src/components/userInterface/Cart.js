@@ -12,7 +12,7 @@ const Cart = (props) => {
 
     const handlePlus=(cartItem)=>{
         //cartItem
-        setCart([...cart,cartItem]);
+       // setCart([...cart,cartItem]);
     }
     console.log("here hello:",cart);
 

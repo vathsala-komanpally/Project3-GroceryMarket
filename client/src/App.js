@@ -28,7 +28,7 @@ export const App = () => {
           <Route path="/catalogue" component={Catalogue} ></Route>
           <Route path="/reciepes" component={Reciepes}></Route>
           <Route path="/contact" component={Contact}></Route>
-          <Route path="/shop/:id"><ItemsDisplay cart={cart} seCart={setCart}/></Route>
+          <Route path="/shop/:id"><ItemsDisplay cart={cart} setCart={setCart}/></Route>
         </Switch>
 
       </div>

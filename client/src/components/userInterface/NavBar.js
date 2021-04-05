@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav'
 import Button from 'react-bootstrap/Button'
 import { CategoriesNavBar } from './CategoriesNavBar';
 import FormControl from 'react-bootstrap/FormControl'
+import {Cart} from "./Cart";
 
 
 const items = [
@@ -16,10 +17,13 @@ const items = [
 ]
 
 const NavBar = (props) => {
-    const [cart, setCart] = useState([]);
+    const [cartClick, setCartClick] = useState("false");
+    const [cartItems, setCartItems] = useState([]);
    
     const handleCart = () => {
-        //setCart(props.cart);
+        setCartClick("true");
+        console.log(props.cart);
+        setCartItems(props.cart);
     }
     return (
         <div>
@@ -37,6 +41,7 @@ const NavBar = (props) => {
                     </Form>
                 </Navbar>
                     <Button variant="light" onClick={handleCart}>Cart  {props.cart.length}</Button>
+                    {cartClick==="true"&&<Cart cart={cartItems}/>}
             </div>
             <CategoriesNavBar />
         </div>
